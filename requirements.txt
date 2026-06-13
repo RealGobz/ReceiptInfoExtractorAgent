@@ -1,0 +1,10 @@
+# Core Agent & LLM integrations
+langchain-core>=0.2.0
+langchain-anthropic>=0.1.15
+langchain-ollama>=0.1.0
+
+# Data validation
+pydantic>=2.0.0
+
+# Frontend UI
+streamlit>=1.35.0

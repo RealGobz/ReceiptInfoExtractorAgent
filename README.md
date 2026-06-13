@@ -44,7 +44,7 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 **3. Install dependencies:**
 
 ```bash
-pip install langchain-anthropic langchain-ollama langchain-core pydantic streamlit
+pip install -r requirements.txt
 ```
 
 **4. Configure environment variables:**
@@ -113,30 +113,6 @@ The local `flag_discrepancy` auditor raises flags for:
 
 - **Amount > 10,000** — Transaction exceeds the maximum single-entry corporate allowance.
 - **Missing date** — Audit trails require a valid ISO timestamp.
-
----
-
-## 🔧 Git Setup
-
-**If updating an existing repo:**
-
-```bash
-git add .
-git commit -m "chore: rename project, class, and documentation to ReceiptInfoExtractorAgent"
-git remote set-url origin https://github.com/RealGobz/ReceiptInfoExtractorAgent.git
-git push origin main
-```
-
-**If initializing from scratch:**
-
-```bash
-git init
-git add .
-git commit -m "Initial commit: ReceiptInfoExtractorAgent core engine and README"
-git branch -M main
-git remote add origin https://github.com/RealGobz/ReceiptInfoExtractorAgent.git
-git push -u origin main
-```
 
 ---
 
