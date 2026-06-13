@@ -20,7 +20,7 @@ class BatchInfoExtractor(BaseModel):
     receipts: List[InfoExtractor] = Field(description="a list of information extracted from multiple receipts.")
 
 
-class ReceiptExtractorModel:
+class ReceiptInfoExtractorModel:
     def __init__(self, session_id: str, provider: 'ollama'|'claude' = "ollama", model_id: str = "llama3.1"):
         self.session_id = session_id
         self.store = {} 
@@ -120,6 +120,24 @@ class ReceiptExtractorModel:
         }
 
 
-model = ReceiptExtractorModel(session_id="audit_session_001", provider="ollama", model_id="llama3.1")
-result = model.extract_with_recovery(input("Enter the raw text for extraction: "))
-print(result)
+
+
+
+# Example usage
+if __name__ == "__main__":
+
+    # 1. Initialize the auditor agent
+    auditor = ReceiptInfoExtractorAgent(
+        session_id="audit_run_001", 
+        provider="ollama", 
+        model_id="llama3.1"
+    )
+
+    # 2. Feed it unstructured, messy data
+    messy_log = "Paid AWS 500 bucks yesterday for the new server hosting, lost the invoice."
+
+    # 3. Execute the extraction with the self-correction loop
+    result = auditor.extract_with_recovery(messy_log, max_retries=3)
+
+    # 4. View the structured compliance output and flagged anomalies
+    print(result)
